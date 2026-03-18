@@ -1,0 +1,11 @@
+/* table layout and style */
+.todo-table { width: 100%; border-collapse: collapse; }
+.todo-table th, .todo-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+.todo-table th { background: #f4f4f4; cursor: pointer; }
+.icon-edit, .icon-delete { font-size: 1.2em; }
+button { background: none; border: none; cursor: pointer; }
+
+.strikethrough td {
+	text-decoration: line-through;
+	color: #888;
+}

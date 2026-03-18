@@ -1,0 +1,31 @@
+<table class="todo-table">
+  <thead>
+    <tr>
+      <th><input type="checkbox" disabled /></th>
+      <th (click)="onSort('title')">Name @if (sortKey==='title') { <span>{{sortDir==='asc'?'▲':'▼'}}</span> }</th>
+      <th (click)="onSort('creationDate')">Creation Date @if (sortKey==='creationDate') { <span>{{sortDir==='asc'?'▲':'▼'}}</span> }</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (todo of sortedTodos; track todo.id) {
+      <tr [class.strikethrough]="isSelected(todo.id)">
+        <td><input type="checkbox" [checked]="isSelected(todo.id)" (change)="select.emit(todo.id)" /></td>
+        <td>
+          @if (editingId === todo.id) {
+            <input [(ngModel)]="editTitle" />
+            <button (click)="saveEdit(todo)">Save</button>
+            <button (click)="cancelEdit()">Cancel</button>
+          } @else {
+            {{todo.title}}
+            <button (click)="startEdit(todo)"><span class="icon-edit">✏️</span></button>
+          }
+        </td>
+        <td>{{todo.creationDate | date:'MM/dd/yyyy'}}</td>
+        <td>
+          <button (click)="delete.emit(todo.id)"><span class="icon-delete">🗑️</span></button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

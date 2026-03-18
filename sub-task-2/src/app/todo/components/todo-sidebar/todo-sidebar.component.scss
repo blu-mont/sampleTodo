@@ -1,0 +1,36 @@
+@use '../../../../scss/include/buttons' as *;
+
+/* Sidebar layout and style */
+.sidebar { position: fixed; right: 0; top: 0; width: 300px; height: 100%; background: #fff; box-shadow: -2px 0 8px rgba(0,0,0,0.1); padding: 1em; z-index: 100; }
+.sidebar h2 { margin-top: 0; }
+.sidebar input { width: 100%; margin-bottom: 1em; }
+
+/* Date field style matches filter date inputs */
+.sidebar input[type='date'] {
+  box-sizing: border-box;
+  padding: 7px 8px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  min-height: 40px;
+}
+
+.sidebar input[type='date']:focus {
+  border-color: #AB5DE9;
+  outline: none;
+}
+
+/* Save button style matches apply button */
+.btn-apply {
+  @extend .btn;
+  background-color: #AB5DE9;
+  width: 100%;
+}
+
+/* Close button style matching reset button */
+.btn-reset {
+  @extend .btn;
+  background-color: #F171F3;
+  width: 100%;
+}
+

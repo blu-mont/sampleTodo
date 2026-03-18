@@ -1,0 +1,15 @@
+@if (todo) {
+  <aside class="sidebar">
+  <h2>Edit Todo</h2>
+  <div>
+    <label>Description</label>
+    <input [(ngModel)]="todo!.title" />
+  </div>
+  <div>
+    <label>Creation Date</label>
+    <input [(ngModel)]="todo!.creationDate" type="date" />
+  </div>
+  <button class="btn-apply" (click)="onSave()">Save</button>
+  <button class="btn-reset" (click)="close.emit()">Close</button>
+</aside>
+}

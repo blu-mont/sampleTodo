@@ -1,0 +1,39 @@
+<!-- Todo Code -->
+<!-- Header -->
+<header>
+    <h1>Creation Date</h1>
+    <!-- Date filter inputs and buttons -->
+    <div class="creation-date-row">
+        <div class="dates">
+            <input type="date" [(ngModel)]="filterStartDate" />
+            <label>-</label>
+            <input type="date" [(ngModel)]="filterEndDate" />
+        </div>
+        <div class="date-actions">
+            <button class="btn-apply" (click)="applyDateFilter()">Apply</button>
+            <button class="btn-reset" (click)="resetDateFilter()">Reset</button>
+        </div>
+    </div>
+</header>
+
+<!-- Todo Table -->
+<app-todo-table
+    [todos]="filteredTodos.length ? filteredTodos : todos"
+    [selectedIds]="selectedIds"
+    [sortKey]="sortKey"
+    [sortDir]="sortDir"
+    (select)="onSelect($event)"
+    (edit)="onEdit($event)"
+    (sortChange)="onSort($event.key)"
+    (updated)="refreshTodoList()"
+    (delete)="onDelete($event)"
+></app-todo-table>
+
+<!-- Edit Sidebar -->
+@if (showSidebar) {
+    <app-todo-sidebar
+        [todo]="editingTodo"
+        (save)="onSidebarSave($event)"
+        (close)="onSidebarClose()"
+    ></app-todo-sidebar>
+}
