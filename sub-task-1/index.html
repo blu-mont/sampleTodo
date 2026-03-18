@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task Board</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- Filter -->
+<div>
+  <span class="filter-label">Creation Date</span>
+  <div class="filter-group">
+    <div class="date-input-wrap">
+      <input type="date" id="dateFrom" />
+      <span class="arrow">→</span>
+      <input type="date" id="dateTo" />
+    </div>
+    <button class="btn btn-apply" onclick="applyFilter()">APPLY</button>
+    <button class="btn btn-reset" onclick="resetFilter()">RESET</button>
+  </div>
+</div>
+
+<!-- Table -->
+<div class="table-wrap">
+  <table id="todoTable">
+    <thead>
+      <tr>
+        <th class="sortable" id="th-title" onclick="sortBy('title')">
+          Name <span class="sort-icon">↑</span>
+        </th>
+        <th class="sortable" id="th-date" onclick="sortBy('date')">
+          Creation Date <span class="sort-icon">↑</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody id="todoBody">
+      <tr><td colspan="3" class="empty-state"><span>⏳</span>Loading tasks…</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Sidebar Overlay -->
+<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<!-- Edit Sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-body">
+    <div>
+      <button class="btn btn-apply" onclick="saveEdit()">SAVE</button>
+      <button class="btn btn-reset" onclick="closeSidebar()">CLOSE</button>
+      <label class="field-label">DESCRIPTION</label>
+      <textarea class="field-textarea" id="editText" rows="5"></textarea>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
